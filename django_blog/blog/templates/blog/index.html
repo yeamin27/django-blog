@@ -1,15 +1,19 @@
 {% extends 'partials/base.html' %}
 
 {% block content %}
-{% for post in posts %}
-<div class="card mb-4">
-    <div class="card-header">
-        <h5>{{ post.title }}</h5>
-        By <strong>{{ post.author }}</strong> on <strong>{{ post.date_posted }}</strong>
-    </div>
-    <div class="card-body">
-        <p>{{ post.content }}</p>
-    </div>
-</div>
-{% endfor %}
+    {% if posts|length > 0 %}
+        {% for post in posts %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>{{ post.title }}</h5>
+                    By <strong>{{ post.author }}</strong> on <strong>{{ post.date_posted|date:'F d, Y' }}</strong>
+                </div>
+                <div class="card-body">
+                    <p>{{ post.content }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4 class="h4 text-center">No blog posted yet!</h4>
+    {% endif %}
 {% endblock content %}
