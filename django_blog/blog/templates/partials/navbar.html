@@ -5,13 +5,27 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'blog-home' %}">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'blog-about' %}">About</a>
             </li>
+        </ul>
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'register' %}" class="nav-link">Resgister</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
