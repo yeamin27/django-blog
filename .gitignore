@@ -1,2 +1,3 @@
 .vscode
 /venv
+/django_blog/media

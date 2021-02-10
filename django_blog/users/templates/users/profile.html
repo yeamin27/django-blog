@@ -1,0 +1,11 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="card">
+        <div class="card-body text-center">
+            <img src="{{ user.profile.image.url }}" alt="profile-image" class="rounded" style="width: 100px; height: 100px">
+            <h6 class="h6">{{ user.username }}</h6>
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
+{% endblock content %}
