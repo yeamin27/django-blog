@@ -23,6 +23,11 @@
     <body>
         {% include 'partials/navbar.html' %}
         <div class="container pt-3 pb-4">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
             {% block content %}{% endblock content %}
         </div>
 
