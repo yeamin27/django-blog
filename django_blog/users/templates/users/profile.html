@@ -6,6 +6,19 @@
             <img src="{{ user.profile.image.url }}" alt="profile-image" class="rounded" style="width: 100px; height: 100px">
             <h6 class="h6">{{ user.username }}</h6>
             <p>{{ user.email }}</p>
+            <hr>
+
+            <form method="POST" enctype="multipart/form-data" class="text-left">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Update Profile</legend>
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Save Changes</button>
+                </div>
+            </form>
         </div>
     </div>
 {% endblock content %}
