@@ -5,6 +5,12 @@
         <div class="card-header">
             <h5>{{ object.title }}</h5>
             By <strong>{{ object.author }}</strong> on <strong>{{ object.date_posted|date:'F d, Y' }}</strong>
+            {% if user == object.author %}
+                <div class="border-top pt-2 mt-2">
+                    <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-outline-info">Update</a>
+                    <a href="{% url 'post-delete' object.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                </div>
+            {% endif %}
         </div>
         <div class="card-body">
             <p>{{ object.content }}</p>
