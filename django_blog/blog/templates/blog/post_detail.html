@@ -4,7 +4,7 @@
     <div class="card mb-4">
         <div class="card-header">
             <h5>{{ object.title }}</h5>
-            By <strong>{{ object.author }}</strong> on <strong>{{ object.date_posted|date:'F d, Y' }}</strong>
+            By <a href="{% url 'user-posts' object.author.username %}"><strong>{{ object.author }}</strong></a> on <strong>{{ object.date_posted|date:'F d, Y' }}</strong>
             {% if user == object.author %}
                 <div class="border-top pt-2 mt-2">
                     <a href="{% url 'post-update' object.id %}" class="btn btn-sm btn-outline-info">Update</a>

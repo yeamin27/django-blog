@@ -1,4 +1,5 @@
 .vscode
 __pycache__/
 /venv
-/django_blog/media
+/django_blog/media/*
+!/django_blog/media/default_user_profile.png

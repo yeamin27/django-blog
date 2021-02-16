@@ -1,6 +1,7 @@
 {% extends 'partials/base.html' %}
 
 {% block content %}
+    <h2 class="pb-2 mb-4 border-bottom border-dark">Posts by {{ view.kwargs.username}} ({{ page_obj.paginator.count}})</h2>
     {% if posts|length > 0 %}
         {% for post in posts %}
             <div class="card mb-4">
@@ -34,6 +35,6 @@
             {% endif %}
         {% endif %}
     {% else %}
-        <h4 class="h4 text-center">No blog posted yet!</h4>
+        <h4 class="h4 text-center">This user haven't write up anything yet.</h4>
     {% endif %}
 {% endblock content %}
