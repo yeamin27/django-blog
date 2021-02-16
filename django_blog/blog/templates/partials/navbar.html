@@ -6,30 +6,37 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'blog-home' %}">Home</a>
+            {% url 'blog-home' as url_blog_home %}
+            <li class="nav-item {% if request.path == url_blog_home %}active{% endif %}">
+                <a class="nav-link" href="{{ url_blog_home }}">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'blog-about' %}">About</a>
+            {% url 'blog-about' as url_blog_about %}
+            <li class="nav-item {% if request.path == url_blog_about %}active{% endif %}">
+                <a class="nav-link" href="{{ url_blog_about }}">About</a>
             </li>
         </ul>
         <ul class="navbar-nav">
             {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a href="{% url 'post-create' %}" class="nav-link">New Post</a>
+                {% url 'post-create' as url_post_create %}
+                <li class="nav-item {% if request.path == url_post_create %}active{% endif %}">
+                    <a href="{{ url_post_create }}" class="nav-link">New Post</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+                {% url 'profile' as url_profile %}
+                <li class="nav-item {% if request.path == url_profile %}active{% endif %}">
+                    <a href="{{ url_profile }}" class="nav-link">Profile</a>
                 </li>
+                {% url 'logout' as url_logout %}
                 <li class="nav-item">
-                    <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                    <a href="{{ url_logout }}" class="nav-link">Logout</a>
                 </li>
             {% else %}
-                <li class="nav-item">
-                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                {% url 'login' as url_login %}
+                <li class="nav-item {% if request.path == url_login %}active{% endif %}">
+                    <a href="{{ url_login }}" class="nav-link">Login</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{% url 'register' %}" class="nav-link">Resgister</a>
+                {% url 'register' as url_register %}
+                <li class="nav-item {% if request.path == url_register %}active{% endif %}">
+                    <a href="{{ url_register }}" class="nav-link">Resgister</a>
                 </li>
             {% endif %}
         </ul>
